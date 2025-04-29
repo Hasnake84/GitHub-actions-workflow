@@ -33,6 +33,5 @@ jobs:
 
       - name: Deploy Lambda Function # Zips lambda directory and updates lambda function
         run: 
-            cd lambda
             zip -r lambda.zip .
             aws lambda update-function-code --function-name my-lambda-cicd --zip-file fileb://lambda.zip
