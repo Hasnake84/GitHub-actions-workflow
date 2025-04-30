@@ -2,7 +2,7 @@ AWSTemplateFormatVersion: '2010-09-09'
 Description: 'S3 bucket for cicd PR'
 
 Parameters:
-  Enviroments:
+  Enviroment:
     Type: String
     Default: test
     AllowedValues:
@@ -11,13 +11,15 @@ Parameters:
       - production
 
 Resources:
-  Mys3Bucket:
+  MyS3Bucket:
     Type: 'AWS::S3::Bucket'
     Properties:
-      BucketNmake: !Sub '${AWS::sTACKnAME}-${Enviroment}-bucket'
+      BucketName: !Sub '${AWS::StackNAME}-${Enviroment}-bucket'
     Tags:
       - Key: Enviroment
         Value: !Ref Enviroment
+      - Key: Enviroment
+        Value: GithubActionsTesting
 
   Outputs:
     BucketName:
